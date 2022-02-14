@@ -425,17 +425,17 @@ public abstract class AbstractGitFlowMojo extends AbstractMojo {
 
         // 1 if there were differences and 0 means no differences
 
-        // git diff --no-ext-diff --ignore-submodules --quiet --exit-code
+        // git diff --no-ext-diff --ignore-submodules --exit-code
         final CommandResult diffCommandResult = executeGitCommandExitCode(
-                "diff", "--no-ext-diff", "--ignore-submodules", "--quiet",
+                "diff", "--no-ext-diff", "--ignore-submodules",
                 "--exit-code");
 
         String error = null;
 
         if (diffCommandResult.getExitCode() == SUCCESS_EXIT_CODE) {
-            // git diff-index --cached --quiet --ignore-submodules HEAD --
+            // git diff-index --cached --ignore-submodules HEAD --
             final CommandResult diffIndexCommandResult = executeGitCommandExitCode(
-                    "diff-index", "--cached", "--quiet", "--ignore-submodules",
+                    "diff-index", "--cached", "--ignore-submodules",
                     "HEAD", "--");
             if (diffIndexCommandResult.getExitCode() != SUCCESS_EXIT_CODE) {
                 error = diffIndexCommandResult.getError();
@@ -639,7 +639,7 @@ public abstract class AbstractGitFlowMojo extends AbstractMojo {
     protected boolean gitCheckBranchExists(final String branchName)
             throws MojoFailureException, CommandLineException {
         CommandResult commandResult = executeGitCommandExitCode("show-ref",
-                "--verify", "--quiet", "refs/heads/" + branchName);
+                "--verify", "refs/heads/" + branchName);
         return commandResult.getExitCode() == SUCCESS_EXIT_CODE;
     }
 
@@ -655,7 +655,7 @@ public abstract class AbstractGitFlowMojo extends AbstractMojo {
      *             If command line execution fails.
      */
     protected boolean gitCheckTagExists(final String tagName) throws MojoFailureException, CommandLineException {
-        CommandResult commandResult = executeGitCommandExitCode("show-ref", "--verify", "--quiet",
+        CommandResult commandResult = executeGitCommandExitCode("show-ref", "--verify",
                 "refs/tags/" + tagName);
         return commandResult.getExitCode() == SUCCESS_EXIT_CODE;
     }
@@ -1046,7 +1046,7 @@ public abstract class AbstractGitFlowMojo extends AbstractMojo {
                 "Fetching remote branch '" + gitFlowConfig.getOrigin() + " "
                         + branchName + "'.");
 
-        CommandResult result = executeGitCommandExitCode("fetch", "--quiet",
+        CommandResult result = executeGitCommandExitCode("fetch",
                 gitFlowConfig.getOrigin(), branchName);
 
         boolean success = result.getExitCode() == SUCCESS_EXIT_CODE;
@@ -1080,7 +1080,6 @@ public abstract class AbstractGitFlowMojo extends AbstractMojo {
 
         List<String> args = new ArrayList<>();
         args.add("push");
-        args.add("--quiet");
         args.add("-u");
 
         if (pushTags) {

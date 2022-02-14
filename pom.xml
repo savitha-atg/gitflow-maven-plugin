@@ -21,7 +21,7 @@
     <artifactId>gitflow-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
     <name>gitflow-maven-plugin</name>
-    <version>1.17.1-SNAPSHOT</version>
+    <version>1.17.1-atg-fork-SNAPSHOT</version>
 
     <description>The Git-Flow Maven Plugin supports various Git workflows, including Vincent Driessen's successful Git branching model and GitHub Flow. This plugin runs Git and Maven commands from the command line. Supports Eclipse Plugins build with Tycho.</description>
 
@@ -41,24 +41,24 @@
         </developer>
     </developers>
 
-    <url>https://github.com/aleksandr-m/gitflow-maven-plugin</url>
+    <url>https://github.com/acrisuretechnology/gitflow-maven-plugin</url>
 
     <scm>
         <url>https://github.com/aleksandr-m/gitflow-maven-plugin</url>
-        <connection>scm:git:git@github.com:aleksandr-m/gitflow-maven-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:aleksandr-m/gitflow-maven-plugin.git</developerConnection>
+        <connection>scm:git@github.com:acrisuretechnology/gitflow-maven-plugin.git</connection>
+        <developerConnection>scm:git@github.com:acrisuretechnology/gitflow-maven-plugin.git</developerConnection>
     </scm>
 
     <distributionManagement>
         <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>central</id>
+            <name>altway-artifactory-releases</name>
+            <url>https://artifactory.altway.dev/artifactory/libs-release</url>
         </repository>
         <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <id>snapshots</id>
+            <name>altway-artifactory-snapshots</name>
+            <url>https://artifactory.altway.dev/artifactory/libs-snapshot</url>
         </snapshotRepository>
     </distributionManagement>
 
